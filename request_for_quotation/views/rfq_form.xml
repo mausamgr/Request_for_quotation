@@ -126,15 +126,15 @@
                     <div id="inputs">
                         <div class="d-flex justify-content-between input-row mb-2">
                             <div style="width: 28%;">
-                                <input 
-                                    type="text" 
-                                    name="product_id" 
-                                    class="form-control" 
-                                    placeholder="Enter product name" 
-                                    list="product_suggestions" 
-                                />
-                                <datalist id="product_suggestions">
-                                    <t t-foreach="request.env['product.template'].search([])" t-as="product">
+                            <input
+                                type="text"
+                                id="product_input"
+                                class="form-control"
+                                placeholder="Enter product name"
+                                list="product_suggestions"
+                            />
+                                <datalist id="product_suggestions"></datalist>
+                                    <!-- <t t-foreach="request.env['product.template'].search([])" t-as="product">
                                         <t t-foreach="product.product_variant_ids" t-as="variant">
                                             <option t-att-value="variant.display_name">
                                                 <t t-esc="variant.display_name"/> 
@@ -144,8 +144,8 @@
                                         <option t-att-value="product.name">
                                             <t t-esc="product.name"/> (Product)
                                         </option>
-                                    </t>
-                                </datalist>
+                                    </t> -->
+                                <!-- </datalist> -->
                             </div>
                             <div style="width: 18%;">
                                 <input 
@@ -164,11 +164,12 @@
                                 />
                             </div>
                             <div style="width: 15%;">
-                                <input 
-                                    type="number" 
-                                    name="unit" 
-                                    class="form-control" 
-                                    placeholder="Enter A Package" 
+                                <input
+                                    type="text"
+                                    id="unit_box"
+                                    class="form-control"
+                                    placeholder="Unit"
+                                    
                                 />
                             </div>
                             <button type="button" id="add" class="btn btn-primary" style="width:10%">Add More</button>

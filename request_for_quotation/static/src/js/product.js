@@ -1,105 +1,57 @@
-odoo.define('request_for_quotation.product_suggestions', function(require) {
-    "use strict";
+console.log("================================")
+    /** @odoo-module **/
+    // odoo.define('request_for_quotation.product', function(require) {
+    //     "use strict";
 
-    const PublicWidget = require('website.public.widget');
-    const rpc = require('web.rpc');
+//     $(document).ready(function() {
+//         async function fetchProducts() {
+//             try {
+//                 const response = await fetch('/api/products');
+//                 const data = await response.json();
 
-    return PublicWidget.Widget.extend({
-        selector: '.product-suggestions-container',
-        events: {
-            'input #productSearch': '_onSearchInput',
-        },
+//                 if (data.status === 'success') {
+//                     populateProductSuggestions(data.data);
+//                 } else {
+//                     console.error('Error fetching products:', data.message);
+//                 }
+//             } catch (error) {
+//                 console.error('Fetch error:', error);
+//             }
+//         }
 
-        /**
-         * Initialize the widget and fetch products
-         */
-        start: function() {
-            this._super.apply(this, arguments);
-            this.$productInput = this.$('#productSearch');
-            this.$datalist = this.$('#productSuggestions');
-            this._fetchProducts();
-            return this;
-        },
+//         function populateProductSuggestions(products) {
+//             const datalist = $('#product_suggestions');
+//             datalist.empty();
 
-        /**
-         * Fetch products from the API
-         * @private
-         */
-        _fetchProducts: function() {
-            rpc.query({
-                    route: '/api/products',
-                    params: {}
-                }).then(this._populateDatalist.bind(this))
-                .catch(this._handleFetchError.bind(this));
-        },
+//             products.forEach(product => {
+//                 const option = $('<option>')
+//                     .val(product.product_name)
+//                     .data('unit', product.unit);
+//                 datalist.append(option);
 
-        /**
-         * Populate datalist with product and variant options
-         * @param {Array} data - Product data from API
-         * @private
-         */
-        _populateDatalist: function(data) {
-            // Clear existing options
-            this.$datalist.empty();
 
-            data.forEach(product => {
-                // Add main product option
-                const productOption = $('<option>', {
-                    value: product.product_name,
-                    text: `${product.product_name} (Product)`
-                });
-                this.$datalist.append(productOption);
+//                 product.variants.forEach(variant => {
+//                     const variantOption = $('<option>')
+//                         .val(`${variant.variant_name} (Variant)`)
+//                         .data('unit', product.unit);
+//                     datalist.append(variantOption);
+//                 });
+//             });
+//         }
 
-                // Add variant options
-                product.variants.forEach(variant => {
-                    const variantOption = $('<option>', {
-                        value: variant.variant_name,
-                        text: `${variant.variant_name} (${product.product_name})`
-                    });
-                    this.$datalist.append(variantOption);
-                });
-            });
-        },
+//         $('#product_input').on('input', function() {
+//             const inputVal = $(this).val();
+//             const selectedOption = $('#product_suggestions option').filter(function() {
+//                 return $(this).val() === inputVal;
+//             });
 
-        /**
-         * Handle search input and filtering
-         * @param {Event} ev - Input event
-         * @private
-         */
-        _onSearchInput: function(ev) {
-            const searchTerm = $(ev.currentTarget).val().toLowerCase();
-            this._filterProducts(searchTerm);
-        },
+//             if (selectedOption.length > 0) {
+//                 $('#unit_box').val(selectedOption.data('unit') || 'N/A');
+//             } else {
+//                 $('#unit_box').val('');
+//             }
+//         });
 
-        /**
-         * Filter products based on search term
-         * @param {string} searchTerm - Search input
-         * @private
-         */
-        _filterProducts: function(searchTerm) {
-            const $options = this.$datalist.find('option');
-            $options.each(function() {
-                const $option = $(this);
-                const optionText = $option.text().toLowerCase();
-                $option.toggle(optionText.includes(searchTerm));
-            });
-        },
-
-        /**
-         * Handle API fetch errors
-         * @param {Error} error - Fetch error
-         * @private
-         */
-        _handleFetchError: function(error) {
-            console.error('Error fetching products:', error);
-            // Optional: Show user-friendly error message
-            this.$datalist.append(
-                $('<option>', {
-                    value: '',
-                    text: 'Error loading products',
-                    disabled: true
-                })
-            );
-        }
-    });
-});
+//         fetchProducts();
+//     });
+// });
