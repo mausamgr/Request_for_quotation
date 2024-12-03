@@ -8,4 +8,3 @@ class PurchaseRequestPortal(http.Controller):
     def new_request_form(self):
         return request.render('request_for_quotation.view_new_request_form')
 
-
