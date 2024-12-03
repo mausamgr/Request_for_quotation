@@ -25,7 +25,7 @@ class ProductAPIController(http.Controller):
                     'product_id': product.id,
                     'product_name': product.name,
                     'category': product.categ_id.name,
-                    # 'unit': product.uom_id.name,
+                    'unit': product.uom_id.sudo().name,
                     'variants': variants,
                 })
 

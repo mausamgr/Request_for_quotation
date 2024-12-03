@@ -134,7 +134,7 @@
                                     list="product_suggestions" 
                                 />
                                 <datalist id="product_suggestions">
-                                    <t t-foreach="request.env['product.template'].search([])" t-as="product">
+                                    <!-- <t t-foreach="request.env['product.template'].search([])" t-as="product">
                                         <t t-foreach="product.product_variant_ids" t-as="variant">
                                             <option t-att-value="variant.display_name">
                                                 <t t-esc="variant.display_name"/> 
@@ -144,7 +144,7 @@
                                         <option t-att-value="product.name">
                                             <t t-esc="product.name"/> (Product)
                                         </option>
-                                    </t>
+                                    </t> -->
                                 </datalist>
                             </div>
                             <div style="width: 18%;">
