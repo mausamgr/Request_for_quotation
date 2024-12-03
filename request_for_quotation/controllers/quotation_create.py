@@ -46,7 +46,7 @@ class RFQController(http.Controller):
                 if not product:
                     return {'error': f"product not found: {product_id}"}
 
-                uom = request.env['uom.uom'].sudo().search([('id', '=', product_uom)], limit=1)
+                uom = request.env['uom.uom'].sudo().search([('id', '=', product_uom ) or ('sudo().name', '='. product_uom)], limit=1)
                 if not uom:
                     return {'error': f"unit of measure not found"}
 
