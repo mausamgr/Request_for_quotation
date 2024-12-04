@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- <template id="purchase_request_portal" name="Purchase Request Portal" inherit_id="purchase.portal_my_purchase_rfqs">
-        <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
-            <div class="o_portal_actions mb-3">
-                <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
-                
-            </div>
-        </xpath>
-    </template> -->
+
 
 
     <template id="purchase_request_portal_test" name="test" inherit_id="purchase.portal_my_purchase_rfqs">
@@ -56,12 +49,12 @@
           </t>
       </t>
     </xpath>
-             <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
-            <div class="o_portal_actions mb-3">
-                <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
-                
-            </div>
-        </xpath>
+    <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
+        <div class="o_portal_actions mb-3 text-end">
+            <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
+        </div>
+    </xpath>
+
 
     </template>
 </odoo>
