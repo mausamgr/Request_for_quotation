@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<odoo> 
+<template id="portal_my_home_menu_new_rfq" name="Portal layout : purchase menu entries" inherit_id="portal.portal_breadcrumbs" priority="25">
+    <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+     
+      <li t-if="page_name == 'new_rfq'">
+        <a t-if="order" t-attf-href="/my/purchase?{{ keep_query() }}">Purchase Orders</a>
+        <t t-else=""> Request For Quotation/New Request</t>
+      </li>
+     
+    </xpath>
+  </template>
+
     <template id="view_new_request_form" name="New Request Form">
     <t t-call="portal.portal_layout">
+
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
             <t t-call="portal.portal_searchbar">
                 <t t-set="title">Your Orders</t>
             </t>
 
-        <div class="container">
- 
-        <h1 style ="text-align:center;" class="pb-5"  >New Order Request</h1>
+        <div class="container row">
+
+            <div class="d-flex col-lg-4 col-xxl-3 border-end my-1 flex-column">
+                 <div class="mb-3">
+                    <label class="form-label" >
+                    <strong>From:</strong>
+                    </label><br/>
+                    <label class="form-label">
+                    <t t-esc = "request.env.company.name"/>
+                    </label><br/>
+
+
+                    <label class="form-label">
+                    <t t-esc = "request.env.company.street"/>
+                    </label><br/>
+
+
+                    <label class="form-label">
+                    <t t-esc = "request.env.company.city"/>, <t t-esc = "request.env.company.state_id.name"/> ,<t t-esc = "request.env.company.zip"/>
+                    </label><br/>
+
+                    <label class="form-label">
+                    <t t-esc = "request.env.company.country_id.name"/>
+                    </label>
+                </div>
+  
+                   <div>
+                     <p >
+
+                    <strong>Powered by <t t-esc="request.env.company.name"/></strong>
+                    
+                    </p>
+                   </div>
+
+      
+            </div>
+            <div class=" col-12 col-lg-8 col-xxl-9 ">
+                <h1 style ="text-align:center;" class="pb-5" >New Order Request</h1>
+
             
             <form method="post" action="/submit/order/request">
             <!-- <t t-call="website.layout"/>
@@ -39,29 +87,8 @@
             </div>
 
 
-<!--                 
-                <div class="mb-3">
-                    <label class="form-label" >
-                    <strong>From:</strong>
-                    </label><br/>
-                    <label class="form-label">
-                    <t t-esc = "request.env.company.name"/>
-                    </label><br/>
-
-
-                    <label class="form-label">
-                    <t t-esc = "request.env.company.street"/>
-                    </label><br/>
-
-
-                    <label class="form-label">
-                    <t t-esc = "request.env.company.city"/>, <t t-esc = "request.env.company.state_id.name"/> ,<t t-esc = "request.env.company.zip"/>
-                    </label><br/>
-
-                    <label class="form-label">
-                    <t t-esc = "request.env.company.country_id.name"/>
-                    </label>
-                </div> -->
+                
+                
                 <div class="row ">
                     <div class="col-3">
                         <label for="data_order" class="form-label me-3">
@@ -169,7 +196,7 @@
                                     id="unit_box"
                                     class="form-control"
                                     placeholder="Unit"
-                                    
+                                    readonly="1"
                                 />
                             </div>
                             <button type="button" id="add" class="btn btn-primary" style="width:10%">Add More</button>
@@ -187,7 +214,13 @@
 
 
             </form>
+
         </div>
+            </div>
+        
+
+        
+        
 </t>
     </template>
 </odoo> 
