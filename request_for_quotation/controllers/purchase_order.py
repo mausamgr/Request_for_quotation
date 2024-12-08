@@ -6,7 +6,7 @@ from odoo.http import Response, request
 
 class ProductAPIController(http.Controller):
     
-    @http.route('/api/products', type='http', auth='public', methods=['GET'])
+    @http.route('/api/products', type='json',website=True, auth='public')
     def get_products(self):
         try:
             products = request.env['product.template'].search([])
@@ -24,19 +24,29 @@ class ProductAPIController(http.Controller):
                 result.append({
                     'product_id': product.id,
                     'product_name': product.name,
+                    'price': product.list_price,
                     'category': product.categ_id.name,
                     'unit': product.uom_id.sudo().name,
                     'variants': variants,
                 })
 
-            return Response(
-                json.dumps({'status': 'success', 'data': result}),
-                content_type='application/json',
-                status=200
-            )
+            return{
+                "status":200,
+                "data":result
+            } 
+            # return Response(
+            #     json.dumps({'status': 'success', 'data': result}),
+            #     content_type='application/json',
+            #     status=200
+            # )
+        # except Exception as e:
+        #     return Response(
+        #         json.dumps({'status': 'error', 'message': str(e)}),
+        #         content_type='application/json',
+        #         status=500
+        #     )
         except Exception as e:
-            return Response(
-                json.dumps({'status': 'error', 'message': str(e)}),
-                content_type='application/json',
-                status=500
-            )
+            return{
+                "status":500,
+                "error":str(e)
+            }
