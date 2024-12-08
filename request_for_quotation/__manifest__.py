@@ -17,7 +17,7 @@
             'web.assets_frontend':[
                 'request_for_quotation/static/src/css/style.css',
                 'request_for_quotation/static/src/js/product.js',
-                'request_for_quotation/static/src/js/addrow.js',
+                'request_for_quotation/static/src/js/addRow.js',
                 ],
         },
 
