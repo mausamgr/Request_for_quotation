@@ -48,13 +48,25 @@
               </t>
           </t>
       </t>
+            </xpath>
+                    <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
     </xpath>
+<<<<<<< HEAD
     <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
         <div class="o_portal_actions mb-3 text-end">
             <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
         </div>
     </xpath>
 
+=======
+             <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
+            <div class="o_portal_actions mb-3">
+                <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
+                
+            </div>
+        </xpath>
+            
+>>>>>>> ad4a6015c50672515721c40567f8e90df95283fb
 
     </template>
 </odoo>
