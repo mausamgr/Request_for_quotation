@@ -5,11 +5,8 @@
 
     <template id="purchase_request_portal_test" name="test" inherit_id="purchase.portal_my_purchase_rfqs">
             <xpath expr="." position="replace">
-<<<<<<< HEAD
-=======
 
 
->>>>>>> origin/api
              <t t-call="portal.portal_layout">
           <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
@@ -51,22 +48,25 @@
               </t>
           </t>
       </t>
-<<<<<<< HEAD
             </xpath>
                     <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
-=======
     </xpath>
+<<<<<<< HEAD
+    <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
+        <div class="o_portal_actions mb-3 text-end">
+            <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
+        </div>
+    </xpath>
+
+=======
              <xpath expr="//t[@t-call='portal.portal_searchbar']" position="before">
->>>>>>> origin/api
             <div class="o_portal_actions mb-3">
                 <a href="/purchase/new_request" class="btn btn-primary" id="new_purchase_request">New Request</a>
                 
             </div>
         </xpath>
-<<<<<<< HEAD
             
-=======
->>>>>>> origin/api
+>>>>>>> ad4a6015c50672515721c40567f8e90df95283fb
 
     </template>
 </odoo>

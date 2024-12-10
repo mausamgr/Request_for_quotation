@@ -32,7 +32,7 @@ $(function() {
                 <input 
                     type="number" 
                     name="package" 
-                    class="form-control" 
+                    class="form-control"    
                     placeholder="Enter A Package" 
                 />
             </div>
